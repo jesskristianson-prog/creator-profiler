@@ -2,9 +2,9 @@ from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
-from .database import Base, engine, SessionLocal
-from . import models, schemas
-from .runner import run_job
+from database import Base, engine, SessionLocal
+import models, schemas
+from runner import run_job
 
 Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Creator Profiler — Queued (AI + Web Search)")
