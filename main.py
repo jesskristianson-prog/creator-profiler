@@ -64,3 +64,15 @@ def get_report(job_id: int, db: Session = Depends(get_db)):
             "description": it.description, "sensational_terms": it.sensational_terms, "loaded_terms": it.loaded_terms,
             "us_vs_them": it.us_vs_them, "explicit_language": it.explicit_language, "monetization": it.monetization} for it in items],
             "report_markdown": md}
+# --- Quick manual trigger endpoints (add at the end of main.py) ---
+@app.get("/run-now")
+def run_now():
+    # Process any queued jobs immediately
+    process_queue()
+    return {"status": "ok"}
+
+@app.post("/run-queue")
+def run_queue():
+    # Same as above but POST, for Swagger button
+    process_queue()
+    return {"status": "ok"}
