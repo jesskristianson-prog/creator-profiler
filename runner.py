@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from . import models
-from .utils import (
+import models
+from utils import (
     parse_generic_rss, yt_channel_id_from_url, yt_rss_from_channel_id, analyze_text, monetization_signals,
     build_chicago_note, today_iso, fetch_youtube_channel_stats, search_reception_queries, ai_sections
 )
